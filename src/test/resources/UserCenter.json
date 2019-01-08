@@ -1,3 +1,28 @@
 {
-	
+	"conf" : {
+		"type" : "org.nutz.ioc.impl.PropertiesProxy",
+		"fields" : {
+			"paths" : ["UserCenter.properties"]
+		}
+	},
+	"dataSource" : {
+		"type" : "com.alibaba.druid.pool.DruidDataSource",
+		"events" : {
+			"depose" : "close"
+    },
+    "fields" : {
+    	"driverClassName" : {"java" :"$conf.get('db.driver')"},
+    	"url" : {"java" :"$conf.get('db.url')"},
+    	"username" : {"java" :"$conf.get('db.username')"},
+    	"password" : {"java" :"$conf.get('db.password')"},
+    	"maxWait" : 15000
+    }
+	},
+	"userCenter" : {
+		"type" : "tech.iopi.usercenter.sql.UserCenterSQL",
+		"singleton" : true,
+		"fields" : {
+			"dataSource" : {"refer":"dataSource"}
+		}
+	}
 }

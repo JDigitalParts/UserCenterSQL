@@ -21,7 +21,12 @@ public class UserCenterSQL implements IUserCenter {
 	
 	private DataSource dataSource;
 	protected Dao dao;
-
+	
+	/**
+	 * 设置DataSource
+	 * 
+	 * @param dataSource
+	 */
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 		dao = new NutDao(this.dataSource);
@@ -33,7 +38,6 @@ public class UserCenterSQL implements IUserCenter {
 	@Override
 	public String addNewUser(UserID userId, String password) {
 		// TODO Auto-generated method stub
-		Dao dao = new NutDao(null);
 		return null;
 	}
 
